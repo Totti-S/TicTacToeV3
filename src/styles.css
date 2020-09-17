@@ -1,0 +1,32 @@
+body {
+  font-family: sans-serif;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+  font-style: Helvetica;
+  font-size: 30px;
+}
+
+table {
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  table-layout: fixed;
+}
+
+td {
+  height: 59px;
+  width: 59px;
+  text-align: center;
+}
+
+td.x {
+  background-color: rgb(124, 252, 0);
+}
+
+td.o {
+  background-color: rgb(250, 128, 114);
+}
