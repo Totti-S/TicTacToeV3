@@ -7,13 +7,16 @@ var $ = function (id) {
 // First we make the gameboard, timebar and misc setup
 var board = document.createElement("div");
 board.classList.add("container");
-document.body.prepend(board);
-var table = document.createElement("table");
+document.body.append(board);
+var table = document.createElement("div");
+table.classList.add("gameboard");
+
 var size = 5; // How large is our board (X*X)
 var activePlayer = "X";
 var bar = document.createElement("div");
 bar.classList.add("progress");
-bar.style.heigth = "20px";
+bar.style.height = "20px";
+
 document.body.append(bar);
 
 // Timer for game stalling reasons. Every 10s, if move isn't made, other player gets turn
@@ -31,25 +34,33 @@ var timer = setInterval(() => {
   time += 10;
 }, 1000);
 
-table.id = "TicTacToe";
+board.id = "TicTacToe";
 board.appendChild(table);
 
 // After making the game board, we make 5x5 cells
 for (let i = 0; i < size; i++) {
-  var tr = document.createElement("tr");
-  tr.id = i;
-  table.appendChild(tr);
-  // One row should have 5 data cells in it
-  for (let j = 0; j < size; j++) {
-    var td = document.createElement("td");
-    var cellID = tr.id + String(j);
-    td.id = cellID;
-    // We add onClick Listener to every cell
-    td.addEventListener("click", function () {
+  var row = document.createElement("div");
+  row.classList.add("row");
+
+  var firstCell = document.createElement("div");
+  firstCell.classList.add("col", "s2", "offset-s1");
+  firstCell.addEventListener("click", function () {
+    move(this);
+  });
+  firstCell.id = String(i) + "0";
+  row.appendChild(firstCell);
+
+  for (let j = 1; j < size; j++) {
+    var cell = document.createElement("div");
+    cell.classList.add("col", "s2");
+    cell.addEventListener("click", function () {
       move(this);
     });
-    tr.appendChild(td);
+    cell.id = String(i) + String(j);
+    row.appendChild(cell);
   }
+
+  table.appendChild(row);
 }
 
 function move(cell) {
@@ -189,3 +200,6 @@ function doWeHaveWinner() {
     }
   }
 }
+
+console.log(board);
+console.log(bar);

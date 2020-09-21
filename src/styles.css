@@ -2,31 +2,30 @@ body {
   font-family: sans-serif;
 }
 
-table,
-th,
-td {
+div.col {
   border: 1px solid black;
   font-style: Helvetica;
   font-size: 30px;
-}
-
-table {
-  border-collapse: collapse;
-  margin-left: auto;
-  margin-right: auto;
-  table-layout: fixed;
-}
-
-td {
-  height: 59px;
-  width: 59px;
+  height: 60px;
   text-align: center;
 }
 
-td.x {
+.row {
+  margin-bottom: 0px;
+}
+
+div.progress {
+  background-color: red;
+}
+
+div.progress.determinate {
+  background-color: blue;
+}
+
+div.x {
   background-color: rgb(124, 252, 0);
 }
 
-td.o {
+div.o {
   background-color: rgb(250, 128, 114);
 }
