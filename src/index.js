@@ -17,6 +17,10 @@ var bar = document.createElement("div");
 bar.classList.add("progress");
 bar.style.height = "20px";
 
+var fill = document.createElement("div");
+fill.classList.add("determinate");
+bar.appendChild(fill);
+
 document.body.append(bar);
 
 // Timer for game stalling reasons. Every 10s, if move isn't made, other player gets turn
